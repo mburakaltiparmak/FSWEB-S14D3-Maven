@@ -1,8 +1,14 @@
 package org.example.company;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.Objects;
 
+import static java.rmi.server.LogStream.log;
+
 public class Car {
+    private static final Log log = LogFactory.getLog(Car.class);
     private boolean engine;
     private int cylinders;
     private String name;
@@ -12,7 +18,9 @@ public class Car {
         this.cylinders = cylinders;
         this.name = name;
     }
-
+    private void printSimpleName() {
+        System.out.println("Car Brand: " + getClass().getSimpleName());
+    }
     public boolean isEngine() {
         return engine;
     }
@@ -45,15 +53,17 @@ public class Car {
         this.wheels = wheels;
     }
     public String startEngine(){
-        return "the car's engine is starting" + getClass().getSimpleName();
+        printSimpleName();
+        return "the car's engine is starting";
     }
     public String accelerate()
     {
-        return "the car is accelerating"+getClass().getSimpleName();
+        printSimpleName();
+        return "the car is accelerating";
     }
     public String brake(){
-
-       return "the car is braking" + getClass().getSimpleName();
+    printSimpleName();
+       return "the car is braking";
     }
 
     @Override
